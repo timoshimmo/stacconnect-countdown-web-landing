@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacconnet - Launching Soon</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("img/grmini_gen_3.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+            padding-top: 5vh;
+            padding-bottom: 5vh;
+        }
+
+        .top-section {
+            flex: 0;
+            margin-bottom: 5vh;
+        }
+
+        .bottom-section {
+            flex: 0;
+            margin-top: auto;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(100, 200, 255, 0.5);
+            font-weight: 400;
+        }
+
+         .exciting {
+            color: #60d5ff;
+            text-shadow: 0 0 30px rgba(96, 213, 255, 0.8);
+            position: relative;
+            font-weight: 600;
+        }
+
+        .exciting::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #60d5ff 50%, transparent 100%);
+            box-shadow: 0 0 10px #60d5ff;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .subtitle-brand {
+            color: #ffd54f;
+            font-weight: 500;
+        }
+
+        .subtitle-days {
+            color: #ffd54f;
+            font-weight: 700;
+        }
+
+        .subtitle-normal {
+            color: #fff;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: transparent;
+            backdrop-filter: none;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            min-width: auto;
+            box-shadow: none;
+            transition: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-unit:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .time-value {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-label {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-top: 0;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .time-separator {
+            font-size: 4rem;
+            color: #fff;
+            font-weight: 300;
+            line-height: 1;
+            margin: 0 0.2rem;
+            align-self: flex-start;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.4),
+                        inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(21, 101, 192, 0.5),
+                        inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #1976d2 0%, #1e88e5 100%);
+        }
+
+        .cta-button:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 10px rgba(21, 101, 192, 0.4),
+                        inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+        }
+
+       .features {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 30px;
+        }
+
+        .feature {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(2px);
+        border-radius: 14px;
+        padding: 18px 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .feature .icon {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 8px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .glow-1 {
+            background: #39bc3c;
+            top: 10%;
+            left: 10%;
+        }
+
+        .glow-2 {
+            background: #022e5d;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1.5rem; }
+            .logo { font-size: 2.5rem; }
+            .time-value { font-size: 3.5rem; }
+            .time-separator { font-size: 3.5rem; }
+            .time-label { font-size: 1rem; }
+            .countdown { gap: 1rem; }
+            .time-separator { margin: 0 0.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <!--
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    -->
+    
+    <div class="container">
+
+        <div class="top-section">
+            <h1>Something <span class="exciting">Exciting</span> is Coming...</h1>
+            <div class="subtitle">
+                <span class="subtitle-brand">StacConnect</span> 
+                <span class="subtitle-normal">launches in</span> 
+                <span class="subtitle-days"><span id="daysLeft">14</span> Days!</span>
+            </div>
+        </div>
+        
+        <div class="bottom-section">
+             <div class="features">
+                <div class="feature">
+                    <span class="icon">🤝</span>
+                    <p>Realtime<br>Collaboration</p>
+                </div>
+                <div class="feature">
+                    <span class="icon">⚙️</span>
+                    <p>Streamlined<br>Workflows</p>
+                </div>
+                <div class="feature">
+                    <span class="icon">🗂️</span>
+                    <p>Shared<br>Workspaces</p>
+                </div>
+                <div class="feature">
+                    <span class="icon">📄</span>
+                    <p>Document<br>Management</p>
+                </div>
+                <div class="feature">
+                    <span class="icon">🔒</span>
+                    <p>Enhanced<br>Security</p>
+                </div>
+            </div>
+            <div class="countdown">
+                <div class="time-unit">
+                    <span class="time-value" id="days">00</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-unit">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-unit">
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-unit">
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+            
+            <button class="cta-button">Get Ready to Connect!</button>
+            
+            <!--<div class="features">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">Realtime Collaboration</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-text">Streamlined Workflows</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏢</div>
+                    <div class="feature-text">Shared Workspaces</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📁</div>
+                    <div class="feature-text">Document Management</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-text">Enhanced Security</div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Countdown timer - set to 14 days from now
+        // const launchDate = new Date();
+        //launchDate.setDate(launchDate.getDate() + 14);
+
+        // Countdown timer - set to February 2, 2026
+        const launchDate = new Date('February 2, 2026 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            document.getElementById('daysLeft').textContent = days;
+
+            if (distance < 0) {
+                document.querySelector('.subtitle').textContent = 'Stacconnet is Live!';
+                document.querySelector('.cta-button').textContent = 'Launch Now!';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
